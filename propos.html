@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Centered Container</title>
+    <style>
+        html,body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px #00000000;
+            background-color: #fff;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #000000;
+            font-family: Arial, sans-serif;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        #Yes, #No {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 75px;
+            transition: opacity 0.3s, box-shadow 0.3s, transform 0.2s ease-in-out;
+        }
+
+        #Yes {
+            background-color: green;
+            
+        }
+
+        #No {
+            background-color: red;
+            max-height: 40px;
+        }
+
+        #Yes:hover {
+            opacity: 0.7;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        #No:hover {
+            opacity: 0.7;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        #Yes:focus, #No:focus {
+            outline: 2px solid #9e9e9d;
+        }
+
+        #image {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        #newInfo {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="src/Untitled-1.jpeg" id="image">
+
+    <div class="container" id="initialContent">
+        <h2 id="q">Do You Love me ?</h2>
+        <div class="buttons">
+            <button id="Yes">Yes</button>
+            <button id="No">No</button>
+        </div>
+    </div>
+    <div id="newInfo">
+        <h3 style="text-align: center;">I knew it</h3>
+    </div>
+
+    <script>
+        let yesbt = document.getElementById("Yes");
+        let Nobt = document.getElementById("No");
+        const image=document.getElementById("image");
+
+        let i = 0;
+        let j = 0;
+        const array = ["Really?", "Are you sure?", "Don't lie", "Think about it", "Are you serious?","i dont care","no way😭","fuck you"];
+        const path=["src/surprised.gif","src/angry.jpg","src/begging.jpeg","src/crying.jpeg","src/speechless.jpeg"]
+
+        yesbt.style.width = "75px";
+        yesbt.style.height = "40px";
+        
+        Nobt.addEventListener("click", () => {
+            if (i < array.length) {
+                Nobt.innerHTML = array[i];
+                i += 1;
+            } else {
+                Nobt.innerHTML = "No"; 
+                i = 0; 
+            }
+
+            if (j < path.length){
+                image.src=path[j];
+                j+=1;
+            }else{
+                image.src="src/Untitled-1.jpeg";
+                j=0;
+            }
+            
+            let currentWidth = parseInt(yesbt.style.width);
+            let currentHeight = parseInt(yesbt.style.height);
+
+            yesbt.style.width = (currentWidth + 100) + "px";
+            yesbt.style.height = (currentHeight + 100) + "px";
+        });
+
+        yesbt.addEventListener("click", () => {
+            const initialContent = document.getElementById("initialContent");
+            initialContent.style.display = 'none';
+
+            image.src="src/teddy-bear-hug-13.gif";
+            image.style.width="200px";
+            image.style.height="200px";
+            
+            const newInfo = document.getElementById("newInfo");
+            newInfo.style.display = 'block';
+           
+        });
+    </script>
+</body>
+</html>
