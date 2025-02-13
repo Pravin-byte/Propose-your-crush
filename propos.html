@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Propose Your Crush</title>
+    <title>Propose your Crush</title>
     <style>
         html,body{
             display: flex;
@@ -16,7 +16,7 @@
             display: flex;
             flex-direction: column;
             text-align: center;
-            padding: 30px;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 8px #00000000;
             background-color: #fff;
@@ -43,6 +43,7 @@
             cursor: pointer;
             width: 75px;
             transition: opacity 0.3s, box-shadow 0.3s, transform 0.2s ease-in-out;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         #Yes {
@@ -81,6 +82,33 @@
             margin-top: 20px;
             padding: 20px;
         }
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #Yes, #No {
+                width: 100px;
+                height: 50px;
+                font-size: 16px;
+            }
+
+            #image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -119,20 +147,24 @@
                 i = 0; 
             }
 
-            if (j < path.length){
-                image.src=path[j];
-                j+=1;
-            }else{
-                image.src="src/Untitled-1.jpeg";
-                j=0;
+            if (j < path.length) {
+                image.src = path[j];
+                j += 1;
+            } else {
+                image.src = "src/Untitled-1.jpeg";
+                j = 0;
             }
-            
+
             let currentWidth = parseInt(yesbt.style.width);
             let currentHeight = parseInt(yesbt.style.height);
+            let currentFontSize = parseInt(window.getComputedStyle(yesbt).fontSize);
 
-            yesbt.style.width = (currentWidth + 100) + "px";
-            yesbt.style.height = (currentHeight + 100) + "px";
+            yesbt.style.width = (currentWidth * 2) + "px";
+            yesbt.style.height = (currentHeight * 2) + "px";
+            yesbt.style.fontSize = (currentFontSize * 1.5) + "px";
         });
+
+
 
         yesbt.addEventListener("click", () => {
             const initialContent = document.getElementById("initialContent");
