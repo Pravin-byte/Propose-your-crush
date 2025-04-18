@@ -1,217 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Propose Your Crush 💘</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <title>Propose your Crush</title>
+    <style>
+        html,body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            flex-direction: column;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffe6eb;
-      overflow: hidden;
-    }
+        .container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px #00000000;
+            background-color: #fff;
+        }
 
-    .background-hearts {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(45deg, #ffd1dc 0px, #ffd1dc 20px, #fff0f5 20px, #fff0f5 40px);
-      z-index: -2;
-    }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #000000;
+            font-family: Arial, sans-serif;
+        }
 
-    .container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
 
-    h2 {
-      font-size: 36px;
-      color: #ff4f81;
-      font-family: 'Pacifico', cursive;
-      margin-bottom: 30px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    }
+        #Yes, #No {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 75px;
+            transition: opacity 0.3s, box-shadow 0.3s, transform 0.2s ease-in-out;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
 
-    #image {
-      width: 160px;
-      height: 160px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    }
+        #Yes {
+            background-color: green;
+            
+        }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+        #No {
+            background-color: red;
+            max-height: 40px;
+        }
 
-    button {
-      padding: 12px 24px;
-      border: none;
-      border-radius: 12px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-    }
+        #Yes:hover {
+            opacity: 0.7;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
 
-    #Yes {
-      background-color: #28a745;
-      color: white;
-    }
+        #No:hover {
+            opacity: 0.7;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
 
-    #Yes:hover {
-      background-color: #34d058;
-      transform: scale(1.1);
-    }
+        #Yes:focus, #No:focus {
+            outline: 2px solid #9e9e9d;
+        }
 
-    #No {
-      background-color: #dc3545;
-      color: white;
-      position: relative;
-    }
+        #image {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        #newInfo {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
 
-    #No:hover {
-      background-color: #ff4c5b;
-    }
+            h2 {
+                font-size: 20px;
+            }
 
-    #newInfo {
-      font-size: 26px;
-      color: #ff4f81;
-      font-weight: bold;
-      display: none;
-      animation: popIn 0.8s ease-in-out;
-    }
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
 
-    @keyframes popIn {
-      0% {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
+            #Yes, #No {
+                width: 100px;
+                height: 50px;
+                font-size: 16px;
+            }
 
-    @media screen and (max-width: 600px) {
-      h2 {
-        font-size: 28px;
-      }
+            #image {
+                width: 80px;
+                height: 80px;
+            }
+        }
 
-      #image {
-        width: 120px;
-        height: 120px;
-      }
-
-      button {
-        font-size: 16px;
-        padding: 10px 20px;
-      }
-
-      .buttons {
-        flex-direction: column;
-        gap: 15px;
-      }
-    }
-  </style>
+    </style>
 </head>
 <body>
+    <img src="src/Untitled-1.jpeg" id="image">
 
-<div class="background-hearts"></div>
+    <div class="container" id="initialContent">
+        <h2 id="q">Do You Love me ?</h2>
+        <div class="buttons">
+            <button id="Yes">Yes</button>
+            <button id="No">No</button>
+        </div>
+    </div>
+    <div id="newInfo">
+        <h3 style="text-align: center;">I knew it</h3>
+    </div>
 
-<div class="container" id="initialContent">
-  <img src="src/Untitled-1.jpeg" id="image" alt="reaction">
-  <h2>💌 Do You Love Me? 💖</h2>
-  <div class="buttons">
-    <button id="Yes">Yes 💚</button>
-    <button id="No">No 💔</button>
-  </div>
-</div>
+    <script>
+        let yesbt = document.getElementById("Yes");
+        let Nobt = document.getElementById("No");
+        const image=document.getElementById("image");
 
-<div class="container" id="finalContent" style="display: none;">
-  <img src="src/teddy-bear-hug-13.gif" id="imageFinal" style="width:200px; height:200px; border-radius: 20px;"/>
-  <div id="newInfo">Awww! I knew it! You're mine now 💘</div>
-</div>
+        let i = 0;
+        let j = 0;
+        const array = ["Really?", "Are you sure?", "Don't lie", "Think about it", "Are you serious?","i dont care","no way😭","fuck you"];
+        const path=["src/surprised.gif","src/angry.jpg","src/begging.jpeg","src/crying.jpeg","src/speechless.jpeg"]
 
-<script>
-  const yesbt = document.getElementById("Yes");
-  const noBt = document.getElementById("No");
-  const image = document.getElementById("image");
-  const initial = document.getElementById("initialContent");
-  const final = document.getElementById("finalContent");
+        yesbt.style.width = "75px";
+        yesbt.style.height = "40px";
+        
+        Nobt.addEventListener("click", () => {
+            if (i < array.length) {
+                Nobt.innerHTML = array[i];
+                i += 1;
+            } else {
+                Nobt.innerHTML = "No"; 
+                i = 0; 
+            }
 
-  const texts = ["Really? 😳", "Sure about that? 🤔", "Why tho 😩", "Rethink! 😣", "Please? 🥺", "Say yes! 😢"];
-  const images = ["src/crying.jpeg", "src/begging.jpeg", "src/speechless.jpeg", "src/surprised.gif"];
-  let i = 0;
+            if (j < path.length) {
+                image.src = path[j];
+                j += 1;
+            } else {
+                image.src = "src/Untitled-1.jpeg";
+                j = 0;
+            }
 
-  noBt.addEventListener("mouseenter", () => {
-    const randX = Math.floor(Math.random() * 300) - 150;
-    const randY = Math.floor(Math.random() * 100) - 50;
-    noBt.style.transform = `translate(${randX}px, ${randY}px)`;
-  });
+            let currentWidth = parseInt(yesbt.style.width);
+            let currentHeight = parseInt(yesbt.style.height);
+            let currentFontSize = parseInt(window.getComputedStyle(yesbt).fontSize);
 
-  noBt.addEventListener("click", () => {
-    noBt.innerHTML = texts[i % texts.length];
-    image.src = images[i % images.length];
-    i++;
-  });
+            yesbt.style.width = (currentWidth * 2) + "px";
+            yesbt.style.height = (currentHeight * 2) + "px";
+            yesbt.style.fontSize = (currentFontSize * 1.5) + "px";
+        });
 
-  yesbt.addEventListener("click", () => {
-    initial.style.display = "none";
-    final.style.display = "flex";
-    confettiRain();
-  });
 
-  function confettiRain() {
-    const duration = 2 * 1000;
-    const animationEnd = Date.now() + duration;
-    const colors = ['#ff4f81', '#ffc107', '#28a745', '#007bff'];
 
-    function frame() {
-      const timeLeft = animationEnd - Date.now();
+        yesbt.addEventListener("click", () => {
+            const initialContent = document.getElementById("initialContent");
+            initialContent.style.display = 'none';
 
-      if (timeLeft <= 0) return;
-
-      const particle = document.createElement('div');
-      particle.style.position = 'fixed';
-      particle.style.top = '-20px';
-      particle.style.left = Math.random() * 100 + 'vw';
-      particle.style.fontSize = '24px';
-      particle.innerText = '💖';
-      particle.style.color = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.zIndex = 9999;
-
-      document.body.appendChild(particle);
-
-      const fall = particle.animate([
-        { transform: 'translateY(0)' },
-        { transform: `translateY(${window.innerHeight + 100}px)` }
-      ], {
-        duration: 2000 + Math.random() * 1000,
-        easing: 'ease-out'
-      });
-
-      fall.onfinish = () => particle.remove();
-
-      requestAnimationFrame(frame);
-    }
-
-    frame();
-  }
-</script>
+            image.src="src/teddy-bear-hug-13.gif";
+            image.style.width="200px";
+            image.style.height="200px";
+            
+            const newInfo = document.getElementById("newInfo");
+            newInfo.style.display = 'block';
+           
+        });
+    </script>
 </body>
 </html>
+
