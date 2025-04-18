@@ -2,86 +2,103 @@
 <html>
 <head>
     <title>Propose your Crush</title>
-    <style>
-        html,body{
+   <style>
+        html, body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
             margin: 0;
-            flex-direction: column;
+            background-color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            color: #333;
         }
 
         .container {
             display: flex;
             flex-direction: column;
             text-align: center;
-            padding: 10px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px #00000000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             background-color: #fff;
+            width: 100%;
+            max-width: 400px;
         }
 
         h2 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 20px;
-            color: #000000;
-            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: green;
+            margin-top: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .buttons {
             display: flex;
             justify-content: space-between;
             gap: 15px;
+            margin-top: 20px;
         }
 
         #Yes, #No {
-            margin: 10px;
-            padding: 10px;
+            padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 75px;
-            transition: opacity 0.3s, box-shadow 0.3s, transform 0.2s ease-in-out;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 18px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease-in-out;
+            width: 45%;
+            font-family: 'Cambria', serif;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         #Yes {
             background-color: green;
-            
+            color: white;
         }
 
         #No {
             background-color: red;
-            max-height: 40px;
+            color: white;
         }
 
-        #Yes:hover {
-            opacity: 0.7;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+        #Yes:hover, #No:hover {
             transform: scale(1.05);
-        }
-
-        #No:hover {
-            opacity: 0.7;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         #Yes:focus, #No:focus {
             outline: 2px solid #9e9e9d;
         }
 
-        #image {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
+        #Yes:active, #No:active {
+            transform: scale(0.98);
         }
+
+        #image {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         #newInfo {
             display: none;
             margin-top: 20px;
             padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         @media screen and (max-width: 600px) {
             .container {
                 width: 90%;
@@ -89,26 +106,25 @@
             }
 
             h2 {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 10px;
             }
 
             #Yes, #No {
-                width: 100px;
-                height: 50px;
+                width: 90%;
                 font-size: 16px;
             }
 
             #image {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
         }
-
     </style>
 </head>
 <body>
