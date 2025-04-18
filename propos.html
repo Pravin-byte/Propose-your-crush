@@ -1,87 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Propose your Crush</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        html,body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
             height: 100%;
             margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #333;
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px #00000000;
-            background-color: #fff;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            animation: fadeIn 0.8s ease;
         }
 
         h2 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 20px;
-            color: #000000;
-            font-family: Arial, sans-serif;
+            font-family: 'Pacifico', cursive;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         .buttons {
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
+            justify-content: center;
+            gap: 20px;
         }
 
-        #Yes, #No {
-            margin: 10px;
-            padding: 10px;
+        button {
             border: none;
-            border-radius: 4px;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: white;
             cursor: pointer;
-            width: 75px;
-            transition: opacity 0.3s, box-shadow 0.3s, transform 0.2s ease-in-out;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
 
         #Yes {
-            background-color: green;
-            
-        }
-
-        #No {
-            background-color: red;
-            max-height: 40px;
+            background: #28a745;
         }
 
         #Yes:hover {
-            opacity: 0.7;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-            transform: scale(1.05);
+            background: #34d058;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #28a74570;
+        }
+
+        #No {
+            background: #dc3545;
         }
 
         #No:hover {
-            opacity: 0.7;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-            transform: scale(1.05);
-        }
-
-        #Yes:focus, #No:focus {
-            outline: 2px solid #9e9e9d;
+            background: #ff4c5b;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #dc354570;
         }
 
         #image {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+
         #newInfo {
             display: none;
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 30px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+            animation: fadeIn 1s ease-in-out;
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media screen and (max-width: 600px) {
             .container {
                 width: 90%;
@@ -89,94 +115,75 @@
             }
 
             h2 {
-                font-size: 20px;
+                font-size: 24px;
             }
 
             .buttons {
                 flex-direction: column;
-                align-items: center;
+                gap: 15px;
             }
 
-            #Yes, #No {
-                width: 100px;
-                height: 50px;
-                font-size: 16px;
+            button {
+                width: 100%;
+                font-size: 18px;
             }
 
             #image {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
+            }
+
+            #newInfo {
+                font-size: 20px;
             }
         }
-
     </style>
 </head>
 <body>
-    <img src="src/Untitled-1.jpeg" id="image">
+    <img src="src/Untitled-1.jpeg" id="image" alt="reaction">
 
     <div class="container" id="initialContent">
-        <h2 id="q">Do You Love me ?</h2>
+        <h2 id="q">💌 Do You Love Me? 💖</h2>
         <div class="buttons">
-            <button id="Yes">Yes</button>
-            <button id="No">No</button>
+            <button id="Yes">Yes 💚</button>
+            <button id="No">No 💔</button>
         </div>
     </div>
-    <div id="newInfo">
-        <h3 style="text-align: center;">I knew it</h3>
-    </div>
+
+    <div id="newInfo">🥰 I knew it! You're mine now! 💞</div>
 
     <script>
-        let yesbt = document.getElementById("Yes");
-        let Nobt = document.getElementById("No");
-        const image=document.getElementById("image");
+        const yesbt = document.getElementById("Yes");
+        const Nobt = document.getElementById("No");
+        const image = document.getElementById("image");
 
-        let i = 0;
-        let j = 0;
-        const array = ["Really?", "Are you sure?", "Don't lie", "Think about it", "Are you serious?","i dont care","no way😭","fuck you"];
-        const path=["src/surprised.gif","src/angry.jpg","src/begging.jpeg","src/crying.jpeg","src/speechless.jpeg"]
+        let i = 0, j = 0;
 
-        yesbt.style.width = "75px";
-        yesbt.style.height = "40px";
-        
+        const texts = ["Really? 😳", "Are you sure? 🤔", "Don't lie 😤", "Think again... 🧐", "Seriously? 😭", "I don’t care 😐", "No way 😠", "Ouch... 😡"];
+        const images = ["src/surprised.gif", "src/angry.jpg", "src/begging.jpeg", "src/crying.jpeg", "src/speechless.jpeg"];
+
+        yesbt.style.width = "90px";
+        yesbt.style.height = "45px";
+
         Nobt.addEventListener("click", () => {
-            if (i < array.length) {
-                Nobt.innerHTML = array[i];
-                i += 1;
-            } else {
-                Nobt.innerHTML = "No"; 
-                i = 0; 
-            }
-
-            if (j < path.length) {
-                image.src = path[j];
-                j += 1;
-            } else {
-                image.src = "src/Untitled-1.jpeg";
-                j = 0;
-            }
+            Nobt.innerHTML = i < texts.length ? texts[i++] : texts[0], i %= texts.length;
+            image.src = j < images.length ? images[j++] : images[0], j %= images.length;
 
             let currentWidth = parseInt(yesbt.style.width);
             let currentHeight = parseInt(yesbt.style.height);
             let currentFontSize = parseInt(window.getComputedStyle(yesbt).fontSize);
 
-            yesbt.style.width = (currentWidth * 2) + "px";
-            yesbt.style.height = (currentHeight * 2) + "px";
-            yesbt.style.fontSize = (currentFontSize * 1.5) + "px";
+            yesbt.style.width = (currentWidth * 1.5) + "px";
+            yesbt.style.height = (currentHeight * 1.5) + "px";
+            yesbt.style.fontSize = (currentFontSize * 1.2) + "px";
         });
 
-
-
         yesbt.addEventListener("click", () => {
-            const initialContent = document.getElementById("initialContent");
-            initialContent.style.display = 'none';
-
-            image.src="src/teddy-bear-hug-13.gif";
-            image.style.width="200px";
-            image.style.height="200px";
-            
-            const newInfo = document.getElementById("newInfo");
-            newInfo.style.display = 'block';
-           
+            document.getElementById("initialContent").style.display = 'none';
+            image.src = "src/teddy-bear-hug-13.gif";
+            image.style.width = "200px";
+            image.style.height = "200px";
+            document.getElementById("newInfo").style.display = 'block';
         });
     </script>
 </body>
